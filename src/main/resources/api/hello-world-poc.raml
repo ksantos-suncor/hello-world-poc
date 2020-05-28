@@ -1,0 +1,22 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/673cbb1b-791b-40ea-960a-dd24da3572ea/ 
+# baseUri: http://api.suncor.com/api/v1/hello-world-poc
+title: hello-world-poc
+version: v1
+
+/message:
+  get:
+    description: get hello message
+    queryParameters:
+      name:
+        type: string
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "Hello Kiran"
+              }
+            

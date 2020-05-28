@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	
+	<groupId>com.accenture</groupId>
+	<artifactId>error-handling-framework</artifactId>
+	<version>1.0.1-RELEASE</version>
+
+	<name>error-handling-framework</name>
+	<description>Common functionality encapsulated within (private) flows and sub-flows.</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/mule</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.7.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.1</version>
+					<executions>
+						<execution>
+							<id>default-deploy</id>
+							<phase>deploy</phase>
+							<goals>
+								<goal>deploy</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<skip>${skip.nexus.deploy}</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<dependencies>
+		<dependency>
+            <groupId>com.accenture</groupId>
+            <artifactId>mule-esb-domain</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <classifier>mule-domain</classifier>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <distributionManagement>
+		<snapshotRepository>
+			<id>mulesoft-mvn-snapshot-local</id>
+			<url>https://suncorenergy.jfrog.io/suncorenergy/mulesoft-mvn-snapshot-local/</url>
+		</snapshotRepository>
+		<repository>
+			<id>mulesoft-mvn-release-local</id>
+			<url>https://suncorenergy.jfrog.io/suncorenergy/mulesoft-mvn-release-local/</url>
+		</repository>
+	</distributionManagement>
+	<repositories>
+         <repository>
+            <id>mulesoft-mvn</id>
+            <name>Suncor Group</name>
+            <url>https://suncorenergy.jfrog.io/suncorenergy/mulesoft-mvn/</url>
+            <layout>default</layout>
+        </repository>
+        
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mulesoft-mvn</id>
+            <name>Suncor Group</name>
+            <layout>default</layout>
+            <url>https://suncorenergy.jfrog.io/suncorenergy/mulesoft-mvn/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

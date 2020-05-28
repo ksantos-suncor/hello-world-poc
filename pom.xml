@@ -59,9 +59,6 @@
                         <formats>
                             <format>html</format>
                         </formats>
-                        <ignoreFiles>
-							<ignoreFile>hello-world-poc.xml</ignoreFile>
-						</ignoreFiles>
                     </coverage>
                 </configuration>
             </plugin>

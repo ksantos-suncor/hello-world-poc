@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="hello-world-poc-test-suite.xml" />
+	<munit:test name="hello-world-poc-test-suite-get:\message:hello-world-poc-configTest" description="Test" doc:id="745fd890-0c2d-4067-9055-91310b524e0a" >
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="a56f1a10-9b96-44d3-b3ea-d6eca4ebe4a3">
+			<munit:payload value="#['']" encoding="UTF-16" />
+
+       <munit:attributes value="#[{queryParams : {'name' :'test'}}]" />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\message:hello-world-poc-config" doc:id="6582d673-08af-42dc-a443-7410e61899ec" name="get:\message:hello-world-poc-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="0fe3c57d-4725-4ce5-8d09-b628900f74d8" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

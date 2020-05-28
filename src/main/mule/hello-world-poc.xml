@@ -6,7 +6,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
         <http:listener-connection host="0.0.0.0" port="8090" />
     </http:listener-config>
     <apikit:config name="hello-world-poc-config" raml="hello-world-poc.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-    <api-gateway:autodiscovery apiId="16162257" doc:name="API Autodiscovery" doc:id="97534a38-fee7-4baf-84ef-c524eae50f9c" flowRef="hello-world-poc-main" />
+    <api-gateway:autodiscovery apiId="16172854" doc:name="API Autodiscovery" doc:id="97534a38-fee7-4baf-84ef-c524eae50f9c" flowRef="hello-world-poc-main" />
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="dbd65538-422d-4aff-a373-19d7fa607107" >
 		<http:request-connection protocol="HTTPS" host="hbctech.okta.com" port="443" />
 	</http:request-config>

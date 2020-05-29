@@ -67,6 +67,7 @@ payload]]></ee:set-payload>
 		</ee:transform>
 		<error-handler >
 			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="638bebae-1f2d-469a-8d3b-2561548dcf12" type="ANY">
+				<logger level="INFO" doc:name="Logger" doc:id="12ecf162-ae6d-4b2d-ac82-d6d6fbeb5859" message="#[error]"/>
 				<set-variable value='500' doc:name="set_httpStatus" doc:id="42b04427-0ea3-409e-9b8f-b7845d887a2c" variableName="httpStatus"/>
 				<ee:transform doc:name="set_error_payload" doc:id="9a03a7b0-f4b8-4f31-bc96-4eab0e59b2f2" >
 					<ee:message >
@@ -75,7 +76,8 @@ output application/json
 ---
 {
 	error_code: 500,
-	error_msg: "Error while connecting HBC API"
+	error_msg: "Error while connecting HBC API",
+	error_description: error.description
 }]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>

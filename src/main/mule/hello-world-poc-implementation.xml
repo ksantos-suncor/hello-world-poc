@@ -56,7 +56,7 @@ output application/json
 	"X-apigw-api-id" : "pcdkqq8k73"
 }]]]></http:headers>
 		</http:request>
-		<logger level="INFO" doc:name="Logger" doc:id="a8373669-1e15-4bf5-8a39-ce647a00173c" message='"[hbc_api_call_output]" ++ #[payload]'/>
+		<logger level="INFO" doc:name="print_payload" doc:id="a8373669-1e15-4bf5-8a39-ce647a00173c" message='"[hbc_api_call_output]" ++ #[payload]'/>
 		<ee:transform doc:name="output_from_hbc_api" doc:id="d1b0cf99-76bd-404b-a6cd-96b0593589d6" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0

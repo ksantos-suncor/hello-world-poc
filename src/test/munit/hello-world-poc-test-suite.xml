@@ -9,6 +9,27 @@
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="hello-world-poc-test-suite.xml" />
 	<munit:test name="hello-world-poc-test-suite-get:\message:hello-world-poc-configTest" description="Test" doc:id="745fd890-0c2d-4067-9055-91310b524e0a" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="d5facc0b-ca77-41ba-9492-abc2a8392b3b" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute attributeName="doc:id" whereValue="123" />
+					<munit-tools:with-attribute attributeName="doc:name" whereValue='token_api_call' />
+					<munit-tools:with-attribute attributeName="doc:id" whereValue="2997abbe-2059-4cd3-aa71-5197e40de36e" />
+					<munit-tools:with-attribute attributeName="doc:name" whereValue="token_api_call" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[MunitTools::getResourceAsString('sample_data/token.json')]" mediaType="test/json" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="710f57f5-d3d6-4fd8-898b-7d9ce50e5499" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute attributeName="doc:name" whereValue='hbc_api_call' />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#["Success"]' mediaType="application/java" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="a56f1a10-9b96-44d3-b3ea-d6eca4ebe4a3">
 			<munit:payload value="#['']" encoding="UTF-16" />

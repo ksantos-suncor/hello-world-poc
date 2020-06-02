@@ -9,7 +9,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:request-connection host="hbctech.okta.com" port="443" protocol="HTTPS"/>
 	</http:request-config>
 	<http:request-config name="HTTP_Request_configuration2" doc:name="HTTP Request configuration" doc:id="81c74933-b08e-40a6-ad7f-644079815966" >
-		<http:request-connection protocol="HTTPS" host="api-dev.loyalty.integration.awshbc.io" port="443" />
+		<http:request-connection protocol="HTTPS" host="api-gateway.hbc.io" port="443" />
 	</http:request-config>
 	<flow name="hbc_api_flow" doc:id="f7c63680-d186-4360-a2b5-2391d8c15793" >
 		<http:request method="POST" doc:name="token_api_call" doc:id="2997abbe-2059-4cd3-aa71-5197e40de36e" config-ref="HTTP_Request_configuration1" path="/oauth2/aus5jcaxcataBAKQw2p7/v1/token">
@@ -39,7 +39,7 @@ output application/json
 "Beare" ++ " " ++ payload.access_token]]></ee:set-variable>
 			</ee:variables>
 		</ee:transform>
-		<http:request method="POST" doc:name="hbc_api_call" doc:id="782a2355-3ca6-48ee-a86d-e76392baeac6" config-ref="HTTP_Request_configuration2" url="https://api-dev.loyalty.integration.awshbc.io/dev/v1/partnerupdate">
+		<http:request method="POST" doc:name="hbc_api_call" doc:id="782a2355-3ca6-48ee-a86d-e76392baeac6" config-ref="HTTP_Request_configuration2" url="https://api-gateway.hbc.io/dev/v1/partnerupdate">
 			<http:body><![CDATA[#[{
 "loyalty_id":"600294999994946",
 "external_id":"SU123656",

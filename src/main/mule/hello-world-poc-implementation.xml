@@ -35,24 +35,27 @@ write({
 				<ee:set-variable variableName="token" ><![CDATA[%dw 2.0
 output application/json
 ---
-"Beare" ++ " " ++ payload.access_token]]></ee:set-variable>
+"Bearer" ++ " " ++ payload.access_token]]></ee:set-variable>
 			</ee:variables>
 		</ee:transform>
 		<logger level="INFO" doc:name="print_token" doc:id="4728e073-e522-445e-8cd6-13bb0fe6a035" message='"[token]"++ #[vars.token]' />
 		<http:request method="POST" doc:name="hbc_api_call" doc:id="782a2355-3ca6-48ee-a86d-e76392baeac6" config-ref="HTTP_Request_configuration2" url="https://api-gateway.hbc.io/dev/v1/partnerupdate">
-			<http:body><![CDATA[#[{
+			<http:body><![CDATA[#[%dw 2.0
+output application/json
+---
+{
 "loyalty_id":"600294999994946",
 "external_id":"SU123656",
 "opt_in_date":"03122019",
 "opt_in_indicator":"ADD",
 "partner_id":"SU",
 "master_card_billing_cycle": "12-25-1988",
-"master_card_open_date": "12-25-1988"
+"master_card_open_date": "12-25-1980"
 }]]]></http:body>
 			<http:headers><![CDATA[#[output application/java
 ---
 {
-	"Authorization" : vars.token,
+	"Authorization" : "vars.token",
 	"X-apigw-api-id" : "pcdkqq8k73"
 }]]]></http:headers>
 		</http:request>

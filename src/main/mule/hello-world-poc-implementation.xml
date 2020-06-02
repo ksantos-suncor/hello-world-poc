@@ -53,7 +53,7 @@ output application/json
 			<http:headers><![CDATA[#[output application/java
 ---
 {
-	"Authorization" : "Bearer eyJraWQiOiIxai1RbHhVTk9HQWdjYmFINTBCNGpHVEs3aTRXY2FFYWlnbmQtUlpJcGJzIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmZqb01PbjVtWDh3V3NxdTBlaDE4VDQtUFpYVG56ei1WTWV4X0dCNGlQYWMiLCJpc3MiOiJodHRwczovL2hiY3RlY2gub2t0YS5jb20vb2F1dGgyL2F1czVqY2F4Y2F0YUJBS1F3MnA3IiwiYXVkIjoiaHR0cHM6Ly9wY2RrcXE4azczLmV4ZWN1dGUtYXBpLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tIiwiaWF0IjoxNTkxMTEwOTY1LCJleHAiOjE1OTExMTQ1NjUsImNpZCI6IjBvYTVqYzhncXZXVG9YaThhMnA3Iiwic2NwIjpbImhiY2FwaS1sb3lhbHR5Il0sInN1YiI6IjBvYTVqYzhncXZXVG9YaThhMnA3In0.LQlvIuKA8Q-z_xtkNgakSj5kiFYBWRxMc9IicOiPpt92QCiHBPflNB2fm1kNr8WviKwE3Zo0D3DL4CWJKIK0Ctfri21wt9tAcH8NHTKPHarLTDQ2b1TQ9BFeNGRXJychA-WHfWu31HCB_MW_KYFXVCDXfW-gwAs9YLnS0H6A7SUAN2YNYfxFyXLvYOl6wlCY9FmNB8Nt83Sn-PWzHzQG-pVyDN7Zd5W49WYCJwpsLvX-PkChEHCqUi2z6W9Li0j9QTbIgtIFZdAjpwHt-fW9wmdDs-mVb-UA9sQBu30SZtfUE4xUm4kjXcyDHllMMNVz7TJ9khbf5VuYZV-XLj-fBQ",
+	"Authorization" : vars.'token',
 	"X-apigw-api-id" : "pcdkqq8k73",
 	"Content-Type" : "application/json"
 }]]]></http:headers>

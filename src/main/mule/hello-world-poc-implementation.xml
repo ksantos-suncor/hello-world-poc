@@ -48,15 +48,14 @@ output application/json
 "external_id":"SU123656",
 "opt_in_date":"03122019",
 "opt_in_indicator":"ADD",
-"partner_id":"SU",
-"master_card_billing_cycle": "12-25-1988",
-"master_card_open_date": "12-25-1980"
+"partner_id":"SU"
 }]]]></http:body>
 			<http:headers><![CDATA[#[output application/java
 ---
 {
-	"Authorization" : "Bearer eyJraWQiOiIxai1RbHhVTk9HQWdjYmFINTBCNGpHVEs3aTRXY2FFYWlnbmQtUlpJcGJzIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmIya3I0T1dZekFHcURqUGVMQ0pIel9fTHV3S2pHZGhqMGVBT19WVFVLUTQiLCJpc3MiOiJodHRwczovL2hiY3RlY2gub2t0YS5jb20vb2F1dGgyL2F1czVqY2F4Y2F0YUJBS1F3MnA3IiwiYXVkIjoiaHR0cHM6Ly9wY2RrcXE4azczLmV4ZWN1dGUtYXBpLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tIiwiaWF0IjoxNTkxMTA4NDA0LCJleHAiOjE1OTExMTIwMDQsImNpZCI6IjBvYTVqYzhncXZXVG9YaThhMnA3Iiwic2NwIjpbImhiY2FwaS1sb3lhbHR5Il0sInN1YiI6IjBvYTVqYzhncXZXVG9YaThhMnA3In0.bsOmfAx72DWphVxiw1-DUG-21wMqOeJINuNKYoN-cSkIp7ArzOw5xTAx2UtodHPcLYb3W8x_oP4xSn9Mut2phBzOgntn7Tzpkqao5VDsTs-TyElbw_D_0CFyYGjgbRv5VEjxmAOB0X0V62XE7VE6wi4zVagpCY2gDosWwkL53OOxEMd6AMvOTosmml5GOBvAgx7LB3nT0DYwcKRp1gbPmW1mZimE9kouOL74LepO7tyN7w6-6KhFgNK1ftWFdqCXzbHB-6uNByB7D5PETUbGnn0O-97z6171DqURueUN1Qh09E5JOtQSuXKKMYUyQGPWW6JeXzPQMO4hfh0R0NWs4w",
-	"X-apigw-api-id" : "pcdkqq8k73"
+	"Authorization" : "Bearer eyJraWQiOiIxai1RbHhVTk9HQWdjYmFINTBCNGpHVEs3aTRXY2FFYWlnbmQtUlpJcGJzIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmZqb01PbjVtWDh3V3NxdTBlaDE4VDQtUFpYVG56ei1WTWV4X0dCNGlQYWMiLCJpc3MiOiJodHRwczovL2hiY3RlY2gub2t0YS5jb20vb2F1dGgyL2F1czVqY2F4Y2F0YUJBS1F3MnA3IiwiYXVkIjoiaHR0cHM6Ly9wY2RrcXE4azczLmV4ZWN1dGUtYXBpLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tIiwiaWF0IjoxNTkxMTEwOTY1LCJleHAiOjE1OTExMTQ1NjUsImNpZCI6IjBvYTVqYzhncXZXVG9YaThhMnA3Iiwic2NwIjpbImhiY2FwaS1sb3lhbHR5Il0sInN1YiI6IjBvYTVqYzhncXZXVG9YaThhMnA3In0.LQlvIuKA8Q-z_xtkNgakSj5kiFYBWRxMc9IicOiPpt92QCiHBPflNB2fm1kNr8WviKwE3Zo0D3DL4CWJKIK0Ctfri21wt9tAcH8NHTKPHarLTDQ2b1TQ9BFeNGRXJychA-WHfWu31HCB_MW_KYFXVCDXfW-gwAs9YLnS0H6A7SUAN2YNYfxFyXLvYOl6wlCY9FmNB8Nt83Sn-PWzHzQG-pVyDN7Zd5W49WYCJwpsLvX-PkChEHCqUi2z6W9Li0j9QTbIgtIFZdAjpwHt-fW9wmdDs-mVb-UA9sQBu30SZtfUE4xUm4kjXcyDHllMMNVz7TJ9khbf5VuYZV-XLj-fBQ",
+	"X-apigw-api-id" : "pcdkqq8k73",
+	"Content-Type" : "application/json"
 }]]]></http:headers>
 		</http:request>
 		<logger level="INFO" doc:name="print_payload" doc:id="a8373669-1e15-4bf5-8a39-ce647a00173c" message='"[hbc_api_call_output]" ++ #[payload]'/>

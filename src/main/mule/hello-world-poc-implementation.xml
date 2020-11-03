@@ -1,89 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+<mule xmlns:sftp="http://www.mulesoft.org/schema/mule/sftp"
+	xmlns:email="http://www.mulesoft.org/schema/mule/email" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/sftp http://www.mulesoft.org/schema/mule/sftp/current/mule-sftp.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="a02749a3-5013-4007-bd38-4051007c9f24" >
-		<http:request-connection host="hbctech.okta.com" port="443" protocol="HTTPS"/>
-	</http:request-config>
-	<http:request-config name="HTTP_Request_configuration2" doc:name="HTTP Request configuration" doc:id="81c74933-b08e-40a6-ad7f-644079815966" >
-		<http:request-connection protocol="HTTPS" host="api-gateway.hbc.io" port="443" />
-	</http:request-config>
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd">
 	<flow name="hbc_api_flow" doc:id="f7c63680-d186-4360-a2b5-2391d8c15793" >
-		<http:request method="POST" doc:name="token_api_call" doc:id="2997abbe-2059-4cd3-aa71-5197e40de36e" config-ref="HTTP_Request_configuration1" path="/oauth2/aus5jcaxcataBAKQw2p7/v1/token">
-			<http:body ><![CDATA[#[%dw 2.0
-output application/java
----
-write({
-"grant_type":"client_credentials",
-"client_id":"0oa5jc8gqvWToXi8a2p7",
-"client_secret":"tRgAc-rjVBlH_GAdKrdIpxOllXgjxHhaxvBgaAwl",
-"scope":"hbcapi-loyalty"
-}, 'application/x-www-form-urlencoded')]]]></http:body>
-			<http:headers ><![CDATA[#[output application/java
----
-{
-	"Content-Type" : "application/x-www-form-urlencoded"
-}]]]></http:headers>
-		</http:request>
-		<ee:transform doc:name="extract_token" doc:id="30856220-213a-4910-abc3-8f93acefe4df" >
-			<ee:message >
-			</ee:message>
-			<ee:variables >
-				<ee:set-variable variableName="token" ><![CDATA[%dw 2.0
-output application/json
----
-"Bearer" ++ " " ++ payload.access_token]]></ee:set-variable>
-			</ee:variables>
-		</ee:transform>
-		<logger level="INFO" doc:name="print_token" doc:id="4728e073-e522-445e-8cd6-13bb0fe6a035" message='"[token]"++ #[vars.token]' />
-		<http:request method="POST" doc:name="hbc_api_call" doc:id="782a2355-3ca6-48ee-a86d-e76392baeac6" config-ref="HTTP_Request_configuration2" url="https://api-gateway.hbc.io/dev/v1/partnerupdate">
-			<http:body><![CDATA[#[%dw 2.0
-output application/json
----
-{
-"loyalty_id":"600294999994946",
-"external_id":"SU123656",
-"opt_in_date":"03122019",
-"opt_in_indicator":"ADD",
-"partner_id":"SU"
-}]]]></http:body>
-			<http:headers><![CDATA[#[output application/java
----
-{
-	"Authorization" : vars.'token',
-	"X-apigw-api-id" : "pcdkqq8k73",
-	"Content-Type" : "application/json"
-}]]]></http:headers>
-		</http:request>
-		<logger level="INFO" doc:name="print_payload" doc:id="a8373669-1e15-4bf5-8a39-ce647a00173c" message='"[hbc_api_call_output]" ++ #[payload]'/>
-		<ee:transform doc:name="output_from_hbc_api" doc:id="d1b0cf99-76bd-404b-a6cd-96b0593589d6" >
+		<ee:transform doc:name="Transform Message" doc:id="9289c6d8-7b69-4fd2-bfbf-8a486b90b36c" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-payload]]></ee:set-payload>
+{
+	message : "hello world"
+}]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<error-handler >
-			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="638bebae-1f2d-469a-8d3b-2561548dcf12" type="ANY">
-				<logger level="INFO" doc:name="Logger" doc:id="12ecf162-ae6d-4b2d-ac82-d6d6fbeb5859" message="#[error]"/>
-				<set-variable value='500' doc:name="set_httpStatus" doc:id="42b04427-0ea3-409e-9b8f-b7845d887a2c" variableName="httpStatus"/>
-				<ee:transform doc:name="set_error_payload" doc:id="9a03a7b0-f4b8-4f31-bc96-4eab0e59b2f2" >
-					<ee:message >
-						<ee:set-payload ><![CDATA[%dw 2.0
-output application/json
----
-{
-	error_code: 500,
-	error_msg: "Error while connecting HBC API",
-	error_description: error.description
-}]]></ee:set-payload>
-					</ee:message>
-				</ee:transform>
-			</on-error-propagate>
-		</error-handler>
 	</flow>
 </mule>

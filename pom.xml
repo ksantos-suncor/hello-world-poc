@@ -70,6 +70,11 @@
                         <formats>
                             <format>html</format>
                         </formats>
+                        <ignoreFiles>
+							<ignoreFile>hello-world-poc-implementation.xml</ignoreFile>
+							<ignoreFile>hello-world-poc.xml</ignoreFile>
+							<ignoreFile>error-handling-framework.xml</ignoreFile>
+						</ignoreFiles>
                     </coverage>
                 </configuration>
             </plugin>

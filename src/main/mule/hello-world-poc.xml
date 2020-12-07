@@ -7,7 +7,10 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
     <apikit:config name="hello-world-poc-config" raml="hello-world-poc.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <api-gateway:autodiscovery apiId="16172854" doc:name="API Autodiscovery" doc:id="97534a38-fee7-4baf-84ef-c524eae50f9c" flowRef="hello-world-poc-main" />
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="84e6b6fc-afff-4aa7-add0-b95f971245bf" >
-		<http:listener-connection host="0.0.0.0" port="${http.port}">
+		<http:listener-connection host="0.0.0.0" port="${https.port}" protocol="HTTPS">
+			<tls:context >
+				<tls:key-store type="${secure::tls.type}" path="${secure::tls.path}" alias="${secure::tls.alias}" keyPassword="${secure::tls.keypass}" password="${secure::tls.storepass}" />
+			</tls:context>
 		</http:listener-connection>
 	</http:listener-config>
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="de774869-4a6f-4ff5-b0a4-5669199dcba3" file="config/${mule.env}.properties" key="${vault.key}" />
